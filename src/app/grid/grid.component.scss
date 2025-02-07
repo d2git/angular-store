@@ -1,0 +1,80 @@
+@use "../../styles/styles.scss" as *;
+
+.section{
+    @include G(background-color, $section);
+    @include PR(l-infinity, padding, 5% 2%);
+    @include PR(m-t, padding, 5%);
+    @include PR(sm, padding, 10% 5%);
+    &_wrapper{
+        @extend .max_container;
+        >*:not(:last-child){
+            @include PR(m-infinity, margin-bottom, 5%);
+            @include PR(sm, margin-bottom, 10%);
+        }
+        &_heading{
+            >*:not(:last-child){
+                @include G(margin-bottom, 15px);
+            }
+            &_title{
+                @extend .heading;
+                @include G(color, $white);
+                @include G(text-align, center);
+            }
+            &_subtitle{
+                @extend .p;
+                @include G(font-weight, 400);
+                @include G(color, $white);
+                @include G(text-align, center);
+                >span{
+                    @include G(color, $secondary);
+                }
+            }
+        }
+        &_holder{
+            @include PR(t-infinity, aspect-ratio, 2);
+            @include PR(m, aspect-ratio, 0.67);
+            @include PR(m-infinity, display, grid);
+            @include PR(t-infinity, grid-template-columns, 1fr 1fr 1fr 1fr);
+            @include PR(m, grid-template-columns, 1fr 1fr);
+            @include PR(t-infinity, grid-template-rows, 1fr 1fr);
+            @include PR(m, grid-template-rows, 1fr 1fr 1fr 1fr);
+            @include PR(l-infinity, grid-column-gap, 30px);
+            @include PR(t, grid-column-gap, 15px);
+            @include PR(l-infinity, grid-row-gap, 30px);
+            @include PR(t, grid-row-gap, 15px);
+            @include PR(m, gap, 30px 30px);
+            @include PR(t-infinity, grid-template-areas, "first first second third" "first first fourth fourth");
+            @include PR(m, grid-template-areas, "first first" "first first" "second third" "fourth fourth");
+            >*:not(:last-child){
+                @include PR(sm, margin-bottom, 5%);
+            }
+            >*:first-child{
+                @include PR(m-infinity, grid-area, first);
+            }
+            >*:nth-child(2){
+                @include PR(m-infinity, grid-area, second);
+            }
+            >*:nth-child(3){
+                @include PR(m-infinity, grid-area, third);
+            }
+            >*:last-child{
+                @include PR(m-infinity, grid-area, fourth);
+            }
+            &_image{
+                @include G(position, relative);
+                @include G(height, 100%);
+                @include PR(sm, aspect-ratio, 1);
+                @include G(transition, transform 0.15s ease);
+                >img{
+                    @include G(position, relative !important);
+                    @include G(object-fit, cover);
+                    @include G(object-position, center);
+                }
+                &:hover{
+                    @include G(transform, rotate(2deg) scale(1.01));
+                    @include G(cursor, grab);
+                }
+            }
+        }
+    }
+}

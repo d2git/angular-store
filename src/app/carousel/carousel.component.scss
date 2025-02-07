@@ -1,0 +1,136 @@
+@use "../../styles/styles.scss" as *;
+
+.section{
+    @include G(background, linear-gradient(180deg, $primary 50%, $section 100%));
+    @include G(position, relative);
+    @include G(height, 100%);
+    @include PR(l-infinity, padding-top, calc(98.5px + 5%));
+    @include PR(m-t, padding-top, calc(68.5px + 5%));
+    @include PR(sm, padding-top, calc(68.5px + 10%));
+    @include PR(m-infinity, padding-bottom, 5%);
+    @include PR(sm, padding-bottom, 10%);
+    @include G(z-index, 1);
+    &_background{
+        @include G(object-fit, cover);
+        @include G(object-position, center);
+        @include G(filter, grayscale(1) opacity(0.05));
+        @include G(z-index, 0);
+    }
+    &_carousel{
+        &_inner{
+            &_item{
+                &_content{
+                    @include PR(l-infinity, padding, 0 calc(2% + 40px) 0 2%);
+                    @include PR(infinity-t, padding, 0 calc(5% + 40px) 0 5%);
+                    &_wrapper{
+                        @extend .max_container;
+                        @include G(display, flex);
+                        @include PR(t-infinity, flex-direction, row);
+                        @include PR(infinity-m, flex-direction, row);
+                        @include G(flex-wrap, wrap);
+                        @include G(align-items, center);
+                        @include G(justify-content, space-between);
+                        &_specification{
+                            @include PR(d, width, calc((100% - 300px) - 15%));
+                            @include PR(l, width, calc((100% - 300px) - 10%));
+                            @include PR(t, width, calc((100% - 300px) - 5%));
+                            @include PR(infinity-m, width, 100%);
+                            @include PR(m, margin-bottom, 5%);
+                            @include PR(sm, margin-bottom, 10%);
+                            >*:not(:last-child){
+                                @include PR(t-infinity, margin-bottom, 10%);
+                                @include PR(m, margin-bottom, 5%);
+                                @include PR(sm, margin-bottom, 10%);
+                            }
+                            &_title{
+                                @extend .heading;
+                                @include G(color, $white);
+                            }
+                            &_prices{
+                                @include G(display, flex);
+                                @include G(flex-direction, row);
+                                @include G(flex-wrap, wrap);
+                                @include G(align-items, center);
+                                @include G(justify-content, flex-start);
+                                >*{
+                                    @include G(font-size, 24px);
+                                    @include G(font-weight, 500);
+                                    &::first-letter{
+                                        @include G(margin-right, 3px);
+                                    }
+                                }
+                                >:first-child{
+                                    @include G(color, $text);
+                                    @include G(position, relative);
+                                    &:after{
+                                        @include G(position, absolute);
+                                        @include G(content, "");
+                                        @include G(left, 0);
+                                        @include G(top, 50%);
+                                        @include G(transform, translateY(-100%));
+                                        @include G(width, 100%);
+                                        @include G(height, 2px);
+                                        @include G(background-color, $text);
+                                    }
+                                }
+                                >:last-child{
+                                    @include G(color, $secondary);
+                                    @include G(margin-left, 5%);
+                                }
+                            }
+                            &_cart{
+                                @include G(display, flex);
+                                @include G(flex-direction, row);
+                                @include G(align-items, center);
+                                @include G(justify-content, flex-start);
+                                &_button{
+                                    @include G(display, flex);
+                                    @include G(align-items, center);
+                                    @include G(justify-content, center);
+                                    @include G(width, 35px);
+                                    @include G(height, 35px);
+                                    @include G(border-radius, 50%);
+                                    @include G(border, 2px solid $secondary);
+                                    @include G(background-color, transparent);
+                                    @include G(color, $white);
+                                    @include G(transition, 0.15s ease);
+                                    >svg{
+                                        @include G(width, 18px);
+                                        @include G(height, auto);
+                                        @include G(transition, 0.3s ease);
+                                    }
+                                    &:hover{
+                                        @include G(background-color, $secondary);
+                                        @include G(color, $primary);
+                                        >svg{
+                                            @include G(transform, rotateZ(180deg) scale(1.5));
+                                        }
+                                    }
+                                }
+                                &_text{
+                                    @include G(font-size, 16px);
+                                    @include G(font-weight, 500);
+                                    @include G(text-transform, uppercase);
+                                    @include G(color, $white);
+                                    @include G(margin-left, 15px);
+                                }
+                            }
+                        }
+                        &_image{
+                            @include G(position, relative);
+                            @include PR(m-infinity, width, 300px);
+                            @include PR(sm, width, 240px);
+                            @include G(height, 100%);
+                            
+                            >img{
+                                @include G(position, relative !important);
+                                @include G(height, auto !important);
+                            }
+                        }
+                    }
+                   
+                }
+            }
+        }
+    }
+}

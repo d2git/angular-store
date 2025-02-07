@@ -1,0 +1,24 @@
+@use "../../styles/styles.scss" as *;
+
+.footer{
+    @include G(z-index, 3);
+    @include G(background-color, $primary);
+    @include PR(l-infinity, padding, 15px 2%);
+    @include PR(infinity-t, padding, 15px 5%);
+    &_wrapper{
+        @extend .max_container;
+        &_text{
+            @extend .p;
+            @include G(color, $text);
+            @include G(text-align, center);
+            >a{
+                @include G(color, inherit);
+                @include G(text-decoration, none);
+                @include G(transition, color 0.3s ease);
+                &:hover{
+                    @include G(color, $secondary);
+                }
+            }
+        }
+    }
+}

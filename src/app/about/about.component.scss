@@ -1,0 +1,239 @@
+@use "../../styles/styles.scss" as *;
+
+.dialog{
+    @include G(background-color, $secondary);
+    @include G(max-width, $min);
+    @include G(border-radius, 0);
+    @include G(pointer-events, all);
+    &_header{
+        @include G(padding, 15px 15px 0);
+        @include G(display, flex);
+        @include G(justify-content, flex-end);
+        >button{
+            @include G(box-shadow, none);
+            @include G(opacity, 1);
+            @include G(transform, scale(1.25));
+        }
+    }
+    &_content{
+        @include G(padding, 15px);
+        &_text{
+            @extend .p;
+            @include G(font-weight, 300);
+            @include G(color, $white);
+        }
+    }
+}
+
+.section{
+    @include G(background-color, $primary);
+    @include PR(l-infinity, padding, 5% 2%);
+    @include PR(m-t, padding, 5%);
+    @include PR(sm, padding, 10% 5%);
+
+    &_wrapper{
+        @extend .max_container;
+        >*:not(:last-child){
+            @include PR(m-infinity, margin-bottom, 5%);
+            @include PR(sm, margin-bottom, 10%);
+        }
+        &_heading{
+            >*:not(:last-child){
+                @include G(margin-bottom, 15px);
+            }
+            &_title{
+                @extend .heading;
+                @include G(color, $white);
+                @include G(text-align, center);
+            }
+            &_subtitle{
+                @extend .p;
+                @include G(font-weight, 400);
+                @include G(color, $white);
+                @include G(text-align, center);
+            }
+        }
+        &_holder{
+            @include G(position, relative);
+            @include PR(t-infinity, padding-left, 30px);
+            @include PR(t-infinity, padding-right, 30px);
+            @include PR(infinity-m, padding-left, 15px);
+            @include PR(infinity-m, padding-right, 15px);
+            >*:not(:last-child){
+                @include PR(m-infinity, margin-bottom, 5%);
+                @include PR(sm, margin-bottom, 10%);
+            }
+            &_first{
+                @include G(position, unset);
+                @include PR(t-infinity, display, flex);
+                @include PR(t-infinity, flex-direction, row);
+                @include PR(t-infinity, flex-wrap, wrap);
+                @include PR(t-infinity, align-items, flex-start);
+                @include PR(t-infinity, justify-content, space-between);
+                >*:not(:last-child){
+                    @include PR(m-t, margin-bottom, 5%);
+                    @include PR(sm, margin-bottom, 10%);
+                }
+                &_content{
+                    @include G(position, unset);
+                    @include PR(l-infinity, width, calc(100% - 193px - 10%));
+                    @include PR(t, width, calc(100% - 180px - 5%));
+                    &:after{
+                        @include G(content, "");
+                        @include PR(t-infinity, width, 3px);
+                        @include PR(infinity-m, width, 2px);
+                        @include PR(t-infinity, height, 120px);
+                        @include PR(infinity-m, height, 90px);
+                        @include G(background-color, $secondary);
+                        @include G(position, absolute);
+                        @include G(left, 0);
+                        @include G(top, 0);
+
+                    }
+                    >*:not(:last-child){
+                        @include PR(t-infinity, margin-bottom, 30px);
+                        @include PR(infinity-m, margin-bottom, 15px);
+                    }
+                    &_heading{
+                        @include G(text-transform, uppercase);
+                        @include G(color, $white);
+                        @include G(font-weight, 600);
+                        &_title{
+                            @extend .headingh3;
+                            @include G(font-weight, inherit);
+                            >span{
+                                @include G(color, $secondary);
+                            }
+                        }
+                        &_subtitle{
+                            @extend .headingh4;
+                            @include G(font-weight, inherit);
+                        }
+                    }
+                    &_text{
+                        @extend .p;
+                        @include G(color, $text);
+                        >span{
+                            @include G(color, $secondary);
+                        }
+                        >a{
+                            @include G(color, $white);
+                            @include G(font-size, inherit);
+                            @include G(font-weight, 400);
+                            @include G(white-space, nowrap);
+                            @include G(text-underline-offset, 2px);
+                            @include G(transition, color 0.3s ease);
+                            &:hover{
+                                @include G(color, $secondary);
+                            }
+                        }
+                    }
+                    &_list{
+                        @include G(list-style-type, circle);
+                        @include G(padding-left, 20px);
+                        >*:not(:last-child){
+                            @include G(margin-bottom, 5px);
+                        }
+                        &_item{
+                            @extend .p;
+                            @include G(color, $text);
+                            &::marker{
+                                @include G(color, $secondary);
+                            }
+                        }
+                    }
+                }
+                &_button{
+                    @include PR(l-infinity, font-size, 18px);
+                    @include PR(infinity-t, font-size, 16px);
+                    @include PR(l-infinity, margin-top, 7.5%);
+                    @include PR(t, margin-top, 10%);
+                    @include G(font-weight, 300);
+                    @include G(color, $white);
+                    @include G(background-color, $secondary);
+                    @include G(padding, 10px 40px);
+                    @include G(transition, all 0.3s ease);
+                    &:hover{
+                        @include G(transform, scale(0.9));
+                    }
+                }
+            }
+            &_table{
+                @include PR(infinity-m, overflow-x, auto);
+                @include PR(infinity-m, -webkit-overflow-scrolling, touch);
+                &::-webkit-scrollbar{
+                    @include PR(infinity-m, height, 2px);
+                }
+                &::-webkit-scrollbar-thumb{
+                    @include PR(infinity-m, background, rgba(105, 113, 250, 0.35));
+                }
+                @include G(width, 100%);
+                table{
+                    @include G(width, 100%);
+                    @include G(table-layout, auto);
+                    @include PR(infinity-m, position, relative);
+                    tr{
+                        th{
+                            @include G(color, $white);
+                            @include G(font-size, 16px);
+                            @include G(font-weight, 500);
+                            @include G(padding, 15px 15px 10px);
+                            @include G(border-bottom, 3px solid rgba(105, 113, 250, 0.35));
+                        }
+                        th:first-child{
+                            @include PR(infinity-m, position, sticky);
+                            @include PR(infinity-m, left, 0);
+                            @include PR(infinity-m, background-color, $primary);
+                        }
+                        th:not(:last-child){
+                            @include G(width, auto);
+                        }
+                        th:last-child{
+                            @include G(text-align, right);
+                            @include G(white-space, nowrap);
+                            @include G(width, 1%);
+                        }
+                        td:first-child{
+                            @include PR(infinity-m, position, sticky);
+                            @include PR(infinity-m, left, 0);
+                            @include PR(infinity-m, background-color, $primary);
+                        }
+                        td{
+                            @include G(color, $text);
+                            @include G(padding, 15px);
+                            @include G(border-bottom, 1px solid rgba(114, 118, 146, 0.35));
+                        }
+                        td:not(:last-child){
+                            @include G(font-size, 14px);
+                            @include G(font-weight, 500);
+                            @include G(width, auto);
+                            @include PR(infinity-m, white-space, nowrap);
+                        }
+                        td:last-child{
+                            @include G(text-align, right);
+                            @include G(font-size, 16px);
+                            @include G(font-weight, 600);
+                            @include G(white-space, nowrap);
+                            @include G(width, 1%);
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                                @include PR(t-infinity, transition, background-color 0.3s ease);
+                            }
+                            &:hover{
+                                td{
+                                    @include PR(t-infinity, background-color, rgba(105, 113, 250, 0.05));
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                
+            }
+        }
+
+    }
+}    

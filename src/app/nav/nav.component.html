@@ -1,0 +1,9 @@
+<section id="navbar" class="section" data-spy="affix">
+ <nav class="section_holder">
+    <ul class="nav section_holder_list">
+        <li class="nav-item" *ngFor="let item of contentArray">
+          <a class="nav-link" href={{item.link}}>{{item.title}}</a>
+        </li>
+      </ul>
+ </nav>
+</section>

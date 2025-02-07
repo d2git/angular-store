@@ -1,0 +1,39 @@
+<section id="store" class="section">
+    <img class="section_background" ngSrc={{contentObj.cover.src}} alt={{contentObj.cover.alt}} fill priority />
+    <div id="carouselExampleFade" class="carousel slide section_carousel" data-bs-ride="carousel">
+        <div class="carousel-inner section_carousel_inner">
+          <div class="carousel-item{{getInitialClass(item)}} section_carousel_inner_item" *ngFor="let item of products">
+            <div class="section_carousel_inner_item_content">
+              <div class="section_carousel_inner_item_content_wrapper">
+                <div class="section_carousel_inner_item_content_wrapper_specification">
+                  <h1 class="section_carousel_inner_item_content_wrapper_specification_title">{{item.title}}</h1>
+                  <div class="section_carousel_inner_item_content_wrapper_specification_prices">
+                    <p>{{convertString(item.price * 1.15 | currency :'USD':'symbol':'1.0-0')}}</p>
+                    <p>{{convertString(item.price | currency :'USD':'symbol':'1.0-0')}}</p>
+                  </div>
+                  <div class="section_carousel_inner_item_content_wrapper_specification_cart">
+                    <button class="section_carousel_inner_item_content_wrapper_specification_cart_button" (click)="addProduct(item)">
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </button>
+                    <p class="section_carousel_inner_item_content_wrapper_specification_cart_text">{{contentObj.button}}</p>
+                  </div>
+                </div>
+                <div class="section_carousel_inner_item_content_wrapper_image">
+                    <img [ngSrc]="item.image" alt="product" fill />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</section>

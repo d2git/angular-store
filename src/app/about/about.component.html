@@ -1,0 +1,51 @@
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="dialog">
+        <div class="dialog_header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="dialog_content">
+          <p class="dialog_content_text">{{contentObj.first.modal.text}}</p>
+        </div>
+      </div>
+    </div>
+</div>
+<section id="about" class="section">
+    <div class="section_wrapper">
+        <div class="section_wrapper_heading">
+            <h2 class="section_wrapper_heading_title">{{contentObj.heading.title}}</h2>
+            <p class="section_wrapper_heading_subtitle">{{contentObj.heading.subtitle}}</p>
+        </div>
+        <div class="section_wrapper_holder">
+            <div class="section_wrapper_holder_first">
+                <div class="section_wrapper_holder_first_content">
+                    <div class="section_wrapper_holder_first_content_heading">
+                        <h3 class="section_wrapper_holder_first_content_heading_title"><span>{{contentObj.first.title[0]}}</span>{{contentObj.first.title[1]}}</h3>
+                        <h4 class="section_wrapper_holder_first_content_heading_subtitle">{{contentObj.first.subtitle}}</h4>
+                    </div>
+                    <p class="section_wrapper_holder_first_content_text">{{contentObj.first.text.text1}}<span>{{contentObj.first.text.highlight}}</span>{{contentObj.first.text.text2}}<a href={{contentObj.first.text.link.link}} target="_blank">{{contentObj.first.text.link.text}}</a>{{contentObj.first.text.text3}}</p>
+                    <ul class="section_wrapper_holder_first_content_list">
+                        <li class="section_wrapper_holder_first_content_list_item" *ngFor="let item of contentObj.first.list">{{item}}</li>
+                    </ul>
+                </div>
+                <button type="button" class="section_wrapper_holder_first_button" data-bs-toggle="modal" data-bs-target="#myModal">{{contentObj.first.modal.button}}</button>
+            </div>
+            <div class="section_wrapper_holder_table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let item of contentObj.table.headers">{{item}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of contentObj.table.listing">
+                            <td>{{item.title}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{convertString(item.price | currency :'USD':'symbol':'1.2-2')}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

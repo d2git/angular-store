@@ -1,0 +1,21 @@
+@use "../../styles/styles.scss" as *;
+
+.section{
+    @include G(z-index, 3);
+    @include G(position, sticky);
+    @include PR(l-infinity, top, 98.5px);
+    @include PR(infinity-t, top, 68.5px);
+    @include G(background-color, $primary);
+    @include PR(l-infinity, padding, 15px 2%);
+    @include PR(infinity-t, padding, 15px 5%);
+    &_holder{
+        @include G(display, flex);
+        @include PR(t-infinity, justify-content, flex-end);
+        @include PR(infinity-m, justify-content, center);
+        &_list{
+            >*:not(:last-child){
+                @include G(margin-right, 30px);
+            }
+        }
+    }
+}

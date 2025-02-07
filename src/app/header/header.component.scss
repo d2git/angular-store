@@ -1,0 +1,61 @@
+@use "../../styles/styles.scss" as *;
+
+.header{
+    @include G(z-index, 3);
+    @include G(position, relative);
+    @include PR(l-infinity, padding, 30px 2%);
+    @include PR(infinity-t, padding, 15px 5%);
+    @include PR(l-infinity, margin-bottom, -98.5px);
+    @include PR(infinity-t, margin-bottom, -68.5px);
+    @include G(transition, 0.2s ease);
+    &.sticky{
+        @include G(top, 0);
+        @include G(left, 0);
+        @include G(width, 100%);
+        @include G(position, sticky);
+        @include G(background-color, $primary);
+    }
+    &_wrapper{
+        @include G(display, flex);
+        @include G(flex-direction, row);
+        @include G(align-items, center);
+        @include G(justify-content, space-between);
+        &_logo{
+            @include G(width, 150px);
+            @include G(color, $text);
+            @include G(transition, color 0.3s ease);
+            >svg{
+                @include G(width, 100%);
+                @include G(height, auto);
+            }
+            &:hover{
+                @include G(color, $secondary);
+            }
+        }
+        &_cart{
+            @include G(color, $white);
+            @include G(display, flex);
+            @include G(flex-direction, row);
+            @include G(align-items, center);
+            &_title{
+                @extend .p;
+                @include G(margin-right, 15px);
+            }
+            &_indicator{
+                @include G(cursor, pointer);
+                @include G(background-color, $secondary);
+                @include G(width, 30px);
+                @include G(height, 30px);
+                @include G(border-radius, 50%);
+                @include G(font-size, 12px);
+                @include G(line-height, unset);
+                @include G(font-weight, 400);
+                @include G(display, flex);
+                @include G(align-items, center);
+                @include G(justify-content, center);
+            }
+        }
+
+        
+    }
+}

@@ -1,0 +1,40 @@
+<section id="contact" class="section">
+    <div class="section_wrapper">
+        <h2 class="section_wrapper_title">{{contentObj.title}}</h2>
+        <div class="section_wrapper_holder">
+            <form #form="ngForm" class="needs-validation section_wrapper_holder_form" novalidate>
+                <div class="section_wrapper_holder_form_input">
+                  <label for="name">{{contentObj.form.name.label}}</label>
+                  <input id="name" type="text" name="fullName" [(ngModel)]="contactObj.fullName" placeholder={{contentObj.form.name.placeholder}} required autocomplete="on"/>
+                </div>
+                <div class="section_wrapper_holder_form_input">
+                  <label for="mail">{{contentObj.form.email.label}}</label>
+                  <input id="mail" type="email" name="email" [(ngModel)]="contactObj.email" placeholder={{contentObj.form.email.placeholder}} pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required autocomplete="on"/>
+                </div>
+                <div class="section_wrapper_holder_form_input">
+                    <label for="phone">{{contentObj.form.phone.label}}</label>
+                    <input id="phone" type="tel" name="phone" [(ngModel)]="contactObj.phone" placeholder={{contentObj.form.phone.placeholder}} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10" required autocomplete="on"/>
+                </div>
+                <div class="section_wrapper_holder_form_input">
+                    <label for="message">{{contentObj.form.message.label}}</label>
+                    <textarea id="message" name="message" [(ngModel)]="contactObj.message" placeholder={{contentObj.form.message.placeholder}} required autocomplete="on"></textarea>
+                </div>
+                <div class="section_wrapper_holder_form_bottom">
+                  <button class="section_wrapper_holder_form_bottom_button" [disabled]="form.invalid" type="button" (click)="onSend()">{{contentObj.form.button}}</button>
+                  <p class="section_wrapper_holder_form_bottom_success" *ngIf="showSuccessMessage">{{contentObj.form.successmessage}}</p>
+                  <p class="section_wrapper_holder_form_bottom_error" *ngIf="showSuccessMessageError">{{contentObj.form.errormessage}}</p>
+                </div>
+              </form>
+              <div class="section_wrapper_holder_contacts">
+                <h3 class="section_wrapper_holder_contacts_title">{{contentObj.contacts.title}}</h3>
+                <p class="section_wrapper_holder_contacts_text">{{contentObj.contacts.text}}</p>
+                <ul class="section_wrapper_holder_contacts_list">
+                    <li class="section_wrapper_holder_contacts_list_item" *ngFor="let item of contentObj.contacts.links">
+                        <a href={{item.link}}>{{item.title}}</a>
+                    </li>
+                    <li class="section_wrapper_holder_contacts_list_item">{{contentObj.contacts.address}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,339 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Variables
+
+// BREAKPOINTS
+$breakpoint_mobile: 451px;
+$breakpoint_tablet: 768px;
+$breakpoint_laptop: 1025px;
+$breakpoint_desktop: 1200px;
+
+// COLORS
+$primary: #20202c;
+$secondary: #6971fa;
+$section: #2a2a36;
+$text: #727692;
+$black: #000000;
+$white: #FFFFFF;
+$success: #008500;
+$error: #ab1b1b;
+
+// Max value
+$max: 1200px;
+$min: 700px;
+
+
+// Font
+
+// Poppins
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Thin.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(../assets/font/Poppins-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Light.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../assets/font/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(../assets/font/Poppins-ExtraBold.ttf);
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(../assets/font/Poppins-Black.ttf);
+}
+
+
+// Mixins map: G - Global, R - Responsive, CR - Custom Responsive
+// Global MIXIN
+
+@mixin G($property, $value) {
+    &{
+        #{$property}: $value;
+    }
+}
+
+// Responsive MIXIN
+@mixin R($property, $d_value, $l_value, $t_value, $m_value, $sm_value) {
+  @media only screen and (min-width: $breakpoint_desktop) {
+      @include G($property, $d_value);
+  }
+
+  @media only screen and (min-width: $breakpoint_laptop) and (max-width: ($breakpoint_desktop - 1)) {
+      @include G($property, $l_value);
+  }
+
+  @media only screen and (min-width: $breakpoint_tablet) and (max-width: ($breakpoint_laptop - 1)) {
+      @include G($property, $t_value);
+  }
+
+  @media only screen and (min-width: $breakpoint_mobile) and (max-width: ($breakpoint_tablet - 1)) {
+      @include G($property, $m_value);
+  }
+
+  @media only screen and (max-width: ($breakpoint_mobile - 1)) {
+      @include G($property, $sm_value);
+  }
+}
+
+// Partial Responsive MIXIN
+@mixin PR($breakpoint, $property, $value) {
+  @if $breakpoint ==sm {
+      @media only screen and (max-width: ($breakpoint_mobile - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==infinity-m {
+      @media only screen and (max-width: ($breakpoint_tablet - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==infinity-t {
+      @media only screen and (max-width: ($breakpoint_laptop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==infinity-l {
+      @media only screen and (max-width: ($breakpoint_desktop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==d {
+      @media only screen and (min-width: $breakpoint_desktop) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==m {
+      @media only screen and (min-width: $breakpoint_mobile) and (max-width: ($breakpoint_tablet - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==t {
+      @media only screen and (min-width: $breakpoint_tablet) and (max-width: ($breakpoint_laptop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==l {
+      @media only screen and (min-width: $breakpoint_laptop) and (max-width: ($breakpoint_desktop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==m-t {
+      @media only screen and (min-width: $breakpoint_mobile) and (max-width: ($breakpoint_laptop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==m-l {
+      @media only screen and (min-width: $breakpoint_mobile) and (max-width: ($breakpoint_desktop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==m-infinity {
+      @media only screen and (min-width: $breakpoint_mobile) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==t-l {
+      @media only screen and (min-width: $breakpoint_tablet) and (max-width: ($breakpoint_desktop - 1)) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==t-infinity {
+      @media only screen and (min-width: $breakpoint_tablet) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $breakpoint ==l-infinity {
+      @media only screen and (min-width: $breakpoint_laptop) {
+          @include G($property, $value);
+      }
+  }
+}
+
+// Custom Responsive MIXIN
+@mixin CR($from, $to, $property, $value) {
+  @if $from ==infinity {
+      @media only screen and (max-width: $to) {
+          @include G($property, $value);
+      }
+  }
+
+  @else if $to ==infinity {
+      @media only screen and (min-width: $from) {
+          @include G($property, $value);
+      }
+  }
+
+  @else {
+      @media only screen and (min-width: $from) and (max-width: $to) {
+          @include G($property, $value);
+      }
+  }
+}
+
+html,
+body {
+    @include G(padding, 0);
+    @include G(-webkit-font-smoothing, antialiased);
+    @include G(-moz-osx-font-smoothing, grayscale);
+}
+  
+body {
+    @include G(position, relative);
+    @include G(font-family, "Poppins");
+    @include G(color, $white);
+    @include G(font-size, 14px);
+    @include G(user-select, none);
+}
+input, textarea, button {
+    @include G(font-family, "Poppins");
+}
+button{
+    @include G(outline, none);
+    @include G(border, none);
+}
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p,
+ul {
+    @include G(margin-bottom, 0);
+}
+  // global classes
+.max_container {
+  @include G(max-width, $max);
+  @include G(width, 100%);
+  @include G(margin-left, auto);
+  @include G(margin-right, auto);
+}
+.heading{
+    @include R(font-size, 55px, 50px, 45px, 40px, 38px);
+    @include R(line-height, 65px, 60px, 55px, 50px, 48px);
+    @include G(font-weight, 600);
+}
+.headingh3{
+    @include PR(l-infinity, font-size, 30px);
+    @include PR(infinity-t, font-size, 22px);
+    @include PR(l-infinity, line-height, 40px);
+    @include PR(infinity-t, line-height, 30px);
+    @include G(font-weight, 500);
+}
+.headingh4{
+    @include PR(l-infinity, font-size, 22px);
+    @include PR(infinity-t, font-size, 18px);
+}
+.p {
+  @include G(font-size, 14px);
+  @include G(line-height, 24px);
+  @include G(font-weight, 500);
+  
+}
+
+// bootstrap corrections
+.nav{
+    .nav-item{
+        .nav-link{
+            @include G(font-size, 14px);
+            @include G(font-weight, 600);
+            @include G(color, $text);
+            @include G(padding, 0);
+            &.active{
+                @include G(color, $white);
+            }
+        }
+    }
+}
+.carousel{
+    .carousel-control-next, 
+    .carousel-control-prev{
+        @include G(width, fit-content);
+        @include G(right, 2%);
+    }
+    .carousel-control-next-icon, 
+    .carousel-control-prev-icon{
+        @include G(width, 40px);
+        @include G(height, 40px);
+    }
+    .carousel-control-next{
+        @include G(top, 50%);
+        @include G(bottom, unset);
+        @include G(transform, translateY(-50%));
+    }
+    .carousel-control-prev{
+        @include G(left, unset);
+        @include G(top, calc(50% + 40px + 10%));
+        @include G(bottom, unset);
+        @include G(transform, translateY(-50%));
+    }
+}

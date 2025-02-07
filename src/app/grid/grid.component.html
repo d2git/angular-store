@@ -1,0 +1,13 @@
+<section id="gallery" class="section">
+    <div class="section_wrapper">
+        <div class="section_wrapper_heading">
+            <h2 class="section_wrapper_heading_title">{{contentObj.title}}</h2>
+            <p class="section_wrapper_heading_subtitle">{{contentObj.subtitle[0]}}<span>{{contentObj.subtitle[1]}}</span>{{contentObj.subtitle[2]}}</p>
+        </div>
+        <div class="section_wrapper_holder">
+            <div *ngFor="let item of contentObj.images" class="section_wrapper_holder_image">
+                <img ngSrc={{item.src}} alt={{item.alt}} fill />
+            </div>
+        </div>
+    </div>
+</section>
